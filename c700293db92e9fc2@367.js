@@ -19,10 +19,10 @@ function _triangle_simple(DOM,culori,rgb)
   // And yes, I'm so lazy that I use culori's hex string
   // conversion and then convert that back to a number.
   const formatter = culori.formatter('hex');
-  const c1 = culori.lrgb(rgb.c1);
-  const c2 = culori.lrgb(rgb.c2);
-  const c3 = culori.lrgb(rgb.c3);
-  const c4 = culori.lrgb(rgb.c4);
+  const c1 = culori.rgb(rgb.c1);
+  const c2 = culori.rgb(rgb.c2);
+  const c3 = culori.rgb(rgb.c3);
+  const c4 = culori.rgb(rgb.c4);
 
   for (let i = 0; i <= 500; i++) {
     const lweight = 500 - i;
@@ -37,7 +37,7 @@ function _triangle_simple(DOM,culori,rgb)
       const r = (c1.r * tlweight + c2.r * trweight + c3.r * blweight + c4.r * brweight) / (500 * 500);
       const g = (c1.g * tlweight + c2.g * trweight + c3.g * blweight + c4.g * brweight) / (500 * 500);
       const b = (c1.b * tlweight + c2.b * trweight + c3.b * blweight + c4.b * brweight) / (500 * 500);
-      const hex = formatter({r, g, b, mode: "lrgb"});
+      const hex = formatter({r, g, b, mode: "rgb"});
 
       const idx = ((-1 + i) + (-1 + j) * 500) * 4;
       imgData.data[idx] = +("0x" + hex.substring(1,3));
